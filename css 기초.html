@@ -4,15 +4,40 @@
 	<meta charset="UTF-8">
 	<title>css 기초 html</title>
 	<style type="text/css">
+
 		div {
+			width:500px;
+			height:50px;
+			text-align:center;
+		} 
+		
+		#a {
 			color: red;
 		}
+
+		#b {
+			color: blue;
+		}
+
+		.a {
+			background-color: yellow
+		}
+
+		.b {
+			background-color: lightgreen
+		}
+
 	</style>
 	<link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
-	<div>aaa</div>
+	<div id="a" class="a">1</div>
+	<div class="b">2</div>
+	<div id="b" class="a">3</div>
+	<div class="b">4</div>
+	<div id="a" class="a">5</div>
+	<div class="b">6</div>
 	<h1>abc</h1>
 </body>
 </html>
