@@ -1,0 +1,54 @@
+<!Doctype HTML>
+<html lang="en">
+<head>
+	<title>jQuery</title>
+	<meta http-equiv="content-type" content="text/html" charset="UTF-8">
+	<style>
+		div { background: #FFF; padding: 10px; margin:10px; }
+	</style>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script type="text/javascript">
+
+		$(document).ready(function () {
+			$(".text_2").val("안녕하세요.");
+			$("#text_1").val("안녕하세요.");
+			$("#content-1").css("color","red");
+			$(".content-2").css("color","blue");
+			$("div").css("color","green");
+			$("div[id='content-3']").css("color","yellow");
+
+			//div 와 p 모두에
+			// $("div, p").css("color","red");
+
+			//div 안에 있는 모든 p
+			// $("div p").css("color","red");
+
+			//div 바로 밑에 있는 자식 p에게만 적용
+			// $("div>p").css("color","red");
+			//div 이면서 id가 contnen-1인 것에 적용
+			$("div#content-1").css("color","red");
+
+		});
+	</script>
+</head>
+
+<body style="padding:10px;">
+	<h2>jQuery 시작 Selector</h2>
+	<p> jQuery 에 대한 자세한 내용을 보려면 jquery.com 을 방문할 수 있다.</p>
+	<div>
+		<input type="button" id="btn_1" onclick="sendData()"/>
+		<input type="text" id="text_1"/>
+		<input type="text" class="text_2"/>
+		<input type="text" class="text_2"/>
+
+		<P> "id"가 "content"로 시작하는 요소를 표시한다. </P>
+		<span> <p>span안에 p</p> </span>
+		<div id="content-1">DIV Content-1</div>
+		<div class="content-2">DIV Content-2</div>
+		<div class="content-2">DIV Content-2</div>
+		<div class="view-1">DIV View-1</div>
+		<div id="content-3">DIV Content-3</div>
+	</div>
+</body>
+</html>
+
