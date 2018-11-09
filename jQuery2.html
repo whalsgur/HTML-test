@@ -5,38 +5,73 @@
 	<meta http-equiv="content-type" content="text/html" charset="UTF-8">
 
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
+
+	<script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+	
+	<script>
+  // Initialize Firebase
+  	var config = {
+    	apiKey: "AIzaSyDXRb_wKghAloYmMnua7DFONlHLRiFDwdA",
+    	authDomain: "html-bcbe5.firebaseapp.com",
+    	databaseURL: "https://html-bcbe5.firebaseio.com",
+    	projectId: "html-bcbe5",
+    	storageBucket: "",
+    	messagingSenderId: "636248004359"
+  	};
+  	firebase.initializeApp(config);
+  	var database = firebase.database();
+				
+	database.ref("Msgs/").on("value", function(snapshot){
+        $("#abc").html("");
+        snapshot.forEach(function (child) {
+        	$("#abc").append("<div>" + child.val().text + "</div>")
+        });
+
+	});
+
+	</script>
+
+
 	<script type="text/javascript">
 
 		$(document).ready(function () {
-			$("#btn_1").on("click", function (){
-				$("a").attr("href", "https://www.naver.com");
-				$("#text_1").val("id 요소에 값 넣기");
-				$(".text_2").val("class 요소에 값 넣기");
-			});
+		// 	$("#btn_1").on("click", function (){
+		// 		$("a").attr("href", "https://www.naver.com");
+		// 		$("#text_1").val("id 요소에 값 넣기");
+		// 		$(".text_2").val("class 요소에 값 넣기");
+		// 	});
 
-			$("#btn_2").on("click", function () {
-				$("#a").css("color", "red");
-			});
+			// $("#btn_2").on("click", function () {
+			// 	$("#a").css("color", "red");
+			// });
 
 			$("#btn_3").on("click", function () {
-				$("#abc").prepend("<div>"+ $("#text_1").val() +"</div>");
+				// $("#abc").prepend("<div>"+ $("#text_1").val() +"</div>");
+				database.ref("Msgs/").push().set({text:$("#text_1").val()});
+				$("#text_1").val('');
+				
+				// $("#btn_4").on("click", function () {
+				// 	alert($("#text_1").val())
+				// });
 			});
 
-			$("#btn_4").on("click", function () {
-				alert($("#text_1").val())
-			});
+			
+
 		});
+
+
+		
 	</script>
 </head>
 
 <body style="padding:10px;">
-	<input type="button" id="btn_1"/>
-	<input type="button" id="btn_2"/>
-	<input type="button" id="btn_3"/>
-	<input type="button" id="btn_4"/>
+	<!-- <input type="button" id="btn_1"/> -->
+	<!-- <input type="button" id="btn_2"/> -->
+	<input type="button" id="btn_3"/ value="보내기">
+	<!-- <input type="button" id="btn_4"/> -->
 	<input type="text" id="text_1"/>
 	<input type="text" id="me" class="text_2"/>
-	<input type="text" id="a" class="text_2"/>
+	<!-- <input type="text" id="a" class="text_2"/> -->
 	<div id="abc">
 
 	</div>
