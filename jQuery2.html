@@ -20,12 +20,14 @@
   	};
   	firebase.initializeApp(config);
   	var database = firebase.database();
-				
+	var list = [];
 	database.ref("Msgs/").on("value", function(snapshot){
         $("#abc").html("");
         snapshot.forEach(function (child) {
+        	list.push(child)
         	$("#abc").append("<div>" + child.val().text + "</div>")
         });
+
 
 	});
 
@@ -44,6 +46,13 @@
 			// $("#btn_2").on("click", function () {
 			// 	$("#a").css("color", "red");
 			// });
+			
+
+
+
+
+
+
 
 			$("#btn_3").on("click", function () {
 				// $("#abc").prepend("<div>"+ $("#text_1").val() +"</div>");
@@ -55,7 +64,28 @@
 				// });
 			});
 
-			
+			$("#btn_4").on("click", function () {
+				
+				
+
+
+
+				$("#abc").html("");
+
+				for (var i=0; i<list.length; i++) {
+					var a = list[i].val().text;
+					var b = $("#text_2").val();
+					if (a.indexOf(b) >=0) {
+						$("#abc").append("<div>" + a + "</div>");
+					}
+				}
+
+					
+
+			});
+
+
+
 
 		});
 
@@ -70,7 +100,9 @@
 	<input type="button" id="btn_3"/ value="보내기">
 	<!-- <input type="button" id="btn_4"/> -->
 	<input type="text" id="text_1"/>
-	<input type="text" id="me" class="text_2"/>
+	<input type="button" id="btn_4"/ value="검색">
+	<input type="text"  id="text_2"/>
+
 	<!-- <input type="text" id="a" class="text_2"/> -->
 	<div id="abc">
 
